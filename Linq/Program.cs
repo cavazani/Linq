@@ -24,7 +24,16 @@
                 new Categoria{id = 3, Status = true, Nome = "Vestuario"},
             };
 
+            //Criando Consulta LINQ
+            var resultado = from produto in listaProdutos
+                            where produto.Valor > 50
+                            select produto;
 
+            //Executar a Consulta
+            foreach (var result in resultado) 
+            {
+                Console.WriteLine($"{result.Id} | {result.Nome} | {result.Valor} | {result.CategoriaId} | ");
+            }
         }
     }
 
