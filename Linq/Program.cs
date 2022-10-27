@@ -10,7 +10,7 @@
                 new Produto{Id = 2, CategoriaId = 3, Nome = "Short", Status = true, Valor = 1},
                 new Produto{Id = 3, CategoriaId = 1, Nome = "VideoGame", Status = true, Valor = 99},
                 new Produto{Id = 4, CategoriaId = 1, Nome = "TV", Status = true, Valor = 33},
-                new Produto{Id = 5, CategoriaId = 1, Nome = "Maquina", Status = true, Valor = 22},
+                new Produto{Id = 5, CategoriaId = 1, Nome = "Maquina", Status = false, Valor = 22},
                 new Produto{Id = 6, CategoriaId = 1, Nome = "Microondas", Status = true, Valor = 1030},
                 new Produto{Id = 7, CategoriaId = 2, Nome = "Arroz", Status = true, Valor = 44},
                 new Produto{Id = 8, CategoriaId = 2, Nome = "Feijão", Status = true, Valor = 232},
@@ -25,8 +25,26 @@
             };
 
             //Criando Consulta LINQ
+            //01 - Filtrar produtos por nome
+            //var resultado = from produto in listaProdutos
+            //                where produto.Nome.ToLower() == "ArRoz".ToLower()
+            //                select produto;
+
+            //02 - Filtrar produtos pela primeira letra do nome
+            //var resultado = from produto in listaProdutos
+            //                where produto.Nome.ToLower().Substring(0,1) == "ArRoz".ToLower()
+            //                select produto;
+
+
+            //03 - Filtrar produtos pela primeira letra do nome e status ativo
+            //var resultado = from produto in listaProdutos
+            //                where produto.Nome.ToLower().Substring(0, 1) == "ArRoz".ToLower() && produto.Status == true
+            //                select produto;
+
+            //04 - Ordenar os produtos por ID.
             var resultado = from produto in listaProdutos
-                            where produto.Valor > 50
+                            where produto.Id > 1 && produto.Id < 6
+                            orderby produto.Id descending
                             select produto;
 
             //Executar a Consulta
